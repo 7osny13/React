@@ -7,9 +7,13 @@ import {BrowserRouter, Route, Switch, Link} from "react-router-dom";
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 import Navbar from './component/navbar';
 import FavouriteP from './pages/favourite';
+import { LangContext } from './context/langcontext';
+import { useState } from 'react';
 
 function App() {
+  const [contextLang , setContext] = useState("en")
   return (
+    <LangContext.Provider value={{contextLang , setContext}} >
     <BrowserRouter>
       <Navbar/>
       <Switch>
@@ -19,6 +23,7 @@ function App() {
              component={UserDetails} />
       </Switch> 
     </BrowserRouter>
+    </LangContext.Provider>
   );
 }
 

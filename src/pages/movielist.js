@@ -1,14 +1,16 @@
 // import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MovieCard from "../component/card";
 import {useDispatch, useSelector} from "react-redux"
 import { getMoviesList } from "../store/actions/movies";
+import { LangContext } from "../context/langcontext";
 
 function MovieList() {
   // const [movies, setMovies] = useState([]);
 
   // const [keyword, setKeyword] = useState();
 
+  
   const movies =  useSelector((state) => state.movies.list)
   console.log(movies)
   const dispatch = useDispatch()
@@ -27,13 +29,13 @@ function MovieList() {
     //   .catch((err) => console.log(err));
   },[]);
 
-
+  const {contextLang , setContext} = useContext(LangContext)
 
   return (
     <>
     
-
-      <div className="container-fluid  row row-col-1 row-cols-md-3 g-4 bg-dark"   >
+    <h1 className="mb-5 text-danger mb-5">Context Language Using Context : {contextLang}</h1>
+      <div className="container-fluid  row row-col-1 row-cols-md-3 g-4 bg-dark mt-5"   >
           { movies.map((movies) => {
             // console.log(movie)
           
